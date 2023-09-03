@@ -2,8 +2,8 @@ apply plugin: 'java-library'
 apply from: rootProject.file("maven.gradle")
 
 dependencies {
-    api 'com.android.tools.build:apksig:3.6.4'
+    api 'com.android.tools.build:apksig:8.0.0'
 }
 
-targetCompatibility = JavaVersion.VERSION_1_8
-sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_11

@@ -12,63 +12,63 @@ version = project.rootProject.VERSION
 
 // Because the components are created only during the afterEvaluate phase, you must
 // configure your publications using the afterEvaluate() lifecycle method.
-afterEvaluate {
-    publishing {
-        publications {
-            // Creates a Maven publication called "vasdollyRelease".
-            vasdollyRelease(MavenPublication) {
-                groupId = "com.tencent.vasdolly"
-                artifactId = POM_ARTIFACT_ID
-                version = project.rootProject.VERSION
-                if (POM_PACKAGING == "aar") {
-                    from components.release
-                } else {
-                    from components.java
-                }
-
-
-                pom {
-                    name = POM_NAME
-                    artifactId = POM_ARTIFACT_ID
-                    packaging = POM_PACKAGING
-                    scm {
-                        connection = "https://github.com/Tencent/VasDolly.git"
-                        developerConnection = "https://github.com/Tencent/VasDolly.git"
-                        url = "https://github.com/Tencent/VasDolly"
-                    }
-
-                    developers {
-                        developer { //developer info
-                            id = 'leon'
-                            name = 'leon'
-                            email = 'ltlovezh@gmail.com'
-                        }
-                        developer { //developer info
-                            id = 'yanyongshan'
-                            name = 'yanyongshan'
-                            email = 'wecityyan@tencent.com'
-                        }
-                    }
-                }
-            }
-        }
-
-        //发布仓库
-        //仓库地址：https://repo.maven.apache.org/maven2/com/tencent/vasdolly/
-        repositories {
-            maven {
-                def releasesRepoUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
-                def snapshotsRepoUrl = 'https://oss.sonatype.org/content/repositories/snapshots'
-                url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
-                credentials {
-                    username = properties.getProperty("ossrhUsername")
-                    password = properties.getProperty("ossrhPassword")
-                }
-            }
-        }
-    }
-
-    signing {
-        sign publishing.publications.vasdollyRelease
-    }
-}
+//afterEvaluate {
+//    publishing {
+//        publications {
+//            // Creates a Maven publication called "vasdollyRelease".
+//            vasdollyRelease(MavenPublication) {
+//                groupId = "com.tencent.vasdolly"
+//                artifactId = POM_ARTIFACT_ID
+//                version = project.rootProject.VERSION
+//                if (POM_PACKAGING == "aar") {
+//                    from components.release
+//                } else {
+//                    from components.java
+//                }
+//
+//
+//                pom {
+//                    name = POM_NAME
+//                    artifactId = POM_ARTIFACT_ID
+//                    packaging = POM_PACKAGING
+//                    scm {
+//                        connection = "https://github.com/Tencent/VasDolly.git"
+//                        developerConnection = "https://github.com/Tencent/VasDolly.git"
+//                        url = "https://github.com/Tencent/VasDolly"
+//                    }
+//
+//                    developers {
+//                        developer { //developer info
+//                            id = 'leon'
+//                            name = 'leon'
+//                            email = 'ltlovezh@gmail.com'
+//                        }
+//                        developer { //developer info
+//                            id = 'yanyongshan'
+//                            name = 'yanyongshan'
+//                            email = 'wecityyan@tencent.com'
+//                        }
+//                    }
+//                }
+//            }
+//        }
+//
+//        //发布仓库
+//        //仓库地址：https://repo.maven.apache.org/maven2/com/tencent/vasdolly/
+//        repositories {
+//            maven {
+//                def releasesRepoUrl = 'https://oss.sonatype.org/service/local/staging/deploy/maven2'
+//                def snapshotsRepoUrl = 'https://oss.sonatype.org/content/repositories/snapshots'
+//                url = version.endsWith('SNAPSHOT') ? snapshotsRepoUrl : releasesRepoUrl
+//                credentials {
+//                    username = properties.getProperty("ossrhUsername")
+//                    password = properties.getProperty("ossrhPassword")
+//                }
+//            }
+//        }
+//    }
+//
+//    signing {
+//        sign publishing.publications.vasdollyRelease
+//    }
+//}
